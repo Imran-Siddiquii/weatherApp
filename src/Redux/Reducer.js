@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const weatherSlice = createSlice({
-  name: "waether",
+  name: "weather",
   initialState: {
     data: [],
     status: true,
@@ -24,7 +24,7 @@ export const weatherApi = (city) => {
     dispatch(waetherStatus(true));
     try {
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=bf435e8a5d0df867cc33ef6a3a391b34`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_SECRET_NAME}`
       );
       const data = await res.json();
       dispatch(waetherStatus(false));
